@@ -15,10 +15,6 @@ struct state {
 int row_moves[] = {0, 0, -1, 1};
 int col_moves[] = {-1, 1, 0, 0};
 
-bool isValid(int x, int y, int n) {
-    return (x >= 0 && x < n && y >= 0 && y < n);
-}
-
 vector<vector<int>> get_puzzle(int n, int& state_i, int& state_y) {
     vector<vector<int>> puzzle(n, vector<int>(n));
 
@@ -35,14 +31,19 @@ vector<vector<int>> get_puzzle(int n, int& state_i, int& state_y) {
     return puzzle;
 }
 
+bool isValid(int x, int y, int n) {
+    return (x >= 0 && x < n && y >= 0 && y < n);
+}
+
 bool is_goal(const vector<vector<int>>& goal, const vector<vector<int>>& state) {
     return goal == state;
 }
 
-void print_path(state* s, int n) {
+void print_path(state* s, int n, int& count) {
     if (s == nullptr) return;
-    print_path(s->parent, n);
-
+    count++;
+    print_path(s->parent, n, count);
+    
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cout << s->state_array[i][j] << " ";
@@ -65,7 +66,9 @@ void get_state(state* s, vector<vector<vector<int>>>& visited, int n, const vect
     visited.push_back(s->state_array);
 
     if (is_goal(goal, s->state_array)) {
-        print_path(s, n);
+        int count = 0;
+        print_path(s, n, count);
+        cout<<"Count : "<<count;
         return;
     }
 
@@ -115,14 +118,8 @@ int main() {
     state* s1 = new state{nullptr, puzzle, 0};
 
     cout << "Given state : \n";
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << puzzle[i][j] << " ";
-        }
-        cout << endl;
-    }
 
     vector<vector<vector<int>>> visited;
     get_state(s1, visited, n, goal);
-}
 
+}
