@@ -125,3 +125,4 @@ int main() {
     vector<vector<vector<int>>> visited;
     get_state(s1, visited, n, goal);
 }
+
