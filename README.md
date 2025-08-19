@@ -1,8 +1,4 @@
-Got it 👍 You want me to structure your **DFS 8-puzzle code explanation** in the same style as your cosine similarity lab write-up. Here’s the formatted version for your given code:
-
----
-
-## **LAB-2 (23 January 2025)**
+## **LAB-1 (14 August 2025)**
 
 **QUES 1 ->**
 **AIM :** To solve the 8-puzzle problem using Depth First Search (DFS) and print the path from the initial state to the goal state.
@@ -77,7 +73,3 @@ Worst Case = **O(b^d)**, where
 
 **SPACE COMPLEXITY :**
 Worst Case = **O(b^d)** due to recursive DFS stack and visited states.
-
----
-
-Do you also want me to prepare **one test case where DFS will go into a long search before reaching the solution** (so you can check how it explores unnecessary paths)?
