@@ -172,7 +172,7 @@ Worst Case = **O(b^d)** due to storage of all nodes in the queue and visited set
 **QUES 3 →**  
 **AIM :** To solve the 8-puzzle problem using **A\* Search (Heuristic Search)** and print the path from the initial state to the goal state.
 
-## **WORKING :**
+**WORKING :**
 
 1. **Start**
 
@@ -224,7 +224,7 @@ Worst Case = **O(b^d)** due to storage of all nodes in the queue and visited set
 8. **Stop**
 
 
-## **OUTPUT :**
+**OUTPUT :**
 
 Example Input –
 
@@ -260,12 +260,12 @@ Goal Reached
 Count : 2
 ```
 
-## **TIME COMPLEXITY :**
+**TIME COMPLEXITY :**
 
 * Worst Case ≈ **O(b^d)** but with heuristic pruning, actual explored nodes << BFS.
 * In practice, A\* is much faster than BFS for large puzzles.
 
-## **SPACE COMPLEXITY :**
+**SPACE COMPLEXITY :**
 
 * **O(b^d)** since it stores nodes in the priority queue.
 * Can be memory intensive for larger puzzles.
@@ -277,7 +277,7 @@ Count : 2
 **AIM :** To solve the 8-puzzle problem using **Hill Climbing (Heuristic Search without backtracking)** and print the path from the initial state to the goal state, or stop at a **local maxima** if reached.
 
 
-## **WORKING :**
+**WORKING :**
 
 1. **Start**
 
@@ -328,7 +328,7 @@ Count : 2
 8. **Stop**
 
 
-## **OUTPUT :**
+**OUTPUT :**
 
 Example Input –
 
@@ -361,7 +361,7 @@ Count : 2
 ```
 
 
-## **TIME COMPLEXITY :**
+**TIME COMPLEXITY :**
 
 * Worst Case ≈ **O(b·d)** where
 
@@ -369,6 +369,6 @@ Count : 2
   * `d` = depth of search until stuck.
 * Much lower than BFS/A\*, but **not complete** (may fail).
 
-## **SPACE COMPLEXITY :**
+**SPACE COMPLEXITY :**
 
 * **O(d)** since only current path is stored.
