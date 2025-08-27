@@ -372,3 +372,227 @@ Count : 2
 **SPACE COMPLEXITY :**
 
 * **O(d)** since only current path is stored.
+
+##
+## **LAB-2 (21 August 2025)**
+
+**QUES 1 →**
+**AIM :** To solve the **Grid Pathfinding Problem** using **A\* Search Algorithm (with Manhattan Distance heuristic)** and print the shortest path from a given **source** to the **destination**, or print **“No solution found”** if blocked by obstacles.
+
+**WORKING :**
+
+1. **Start**
+
+2. **Input Grid Configuration:**
+
+   * Read grid size `n × n`.
+   * Read **source** coordinates `(i, j)` and set `g = 0`.
+   * Read **destination** coordinates `(dest_i, dest_j)`.
+
+3. **Obstacles Setup:**
+
+   * Allow user to mark some grid cells as **water cells (blocked)**.
+   * For obstacles → set `g = ∞` and `h = ∞`.
+
+4. **Heuristic Function:**
+
+   * Use **Manhattan Distance**:
+
+     $$
+     h(n) = |x - dest_x| + |y - dest_y|
+     $$
+   * Each cell stores `{g, h}`, where:
+
+     * `g = cost from source`
+     * `h = heuristic (Manhattan distance to goal)`
+
+5. **A\* Search Exploration:**
+
+   * Maintain a **min-heap (priority queue)** ordered by:
+
+     $$
+     f(n) = g(n) + h(n)
+     $$
+   * Push initial state into the priority queue.
+   * Maintain a **visited matrix**.
+
+   While queue is not empty:
+
+   * Pop the state with lowest `f(n)`.
+   * If this is the destination → **print path** and stop.
+   * Otherwise:
+
+     * Expand neighbors (up, down, left, right).
+     * For valid cells:
+
+       * Update `g` and `h`.
+       * Push into priority queue.
+
+6. **Goal Test:**
+
+   * If current cell = destination → success.
+   * If queue empties without reaching destination → **No solution found**.
+
+7. **Path Printing:**
+
+   * Trace back using **parent pointers** from goal to source.
+   * Print sequence of coordinates in order.
+
+8. **Stop**
+
+**OUTPUT :**
+
+Example Input –
+
+Enter grid size (n): 5
+Enter source (x y): 0 0
+Enter destination (x y): 4 4
+Enter indices with water (obstacles): 
+Enter water cell (x y): 1 2
+Do you want to enter more water cells? (y/n): y
+Enter water cell (x y): 2 2
+Do you want to enter more water cells? (y/n): y
+Enter water cell (x y): 3 1
+Do you want to enter more water cells? (y/n): n
+```
+
+Possible Output –
+
+```
+Path found:
+(0,0)
+(0,1)
+(0,2)
+(0,3)
+(0,4)
+(1,4)
+(2,4)
+(3,4)
+(4,4)
+```
+
+If no valid route exists:
+
+```
+No solution found!
+```
+
+---
+
+**TIME COMPLEXITY :**
+
+* Worst Case ≈ **O(b^d)** per step, with a poorly chosen or non-admissible heuristic, the time complexity can be exponential:
+where:
+`b` represents the branching factor, which is the average number of successor states or edges originating from a given node.
+
+`d` signifies the depth of the shallowest goal state or the length of the shortest path.
+
+*However, when using an admissible and consistent heuristic (one that never overestimates the true cost to reach the goal), the A* algorithm is more efficient, with its time complexity bounded by: 
+
+**O(E log E)**, where:
+E is the number of edges in the graph
+
+**SPACE COMPLEXITY :**
+
+* **O(n²)** for grid storage, visited array, and priority queue.
+
+<img width="794" height="482" alt="image" src="https://github.com/user-attachments/assets/f671d076-a9b2-43b5-88fa-af707cef7bd2" />
+
+
+
+##
+
+**QUES 2 →**
+**AIM :** To solve the **Water Jug Problem** using **Depth First Search (DFS)** and print the sequence of states (amount of water in both jugs) that leads to the target amount in the desired jug. If no sequence exists, print **“No solution found.”**
+
+---
+
+**WORKING :**
+
+1. **Start**
+
+2. **Input Parameters:**
+
+   * Read capacity of Jug X (`capacity1`).
+   * Read capacity of Jug Y (`capacity2`).
+   * Read target amount of water `target`.
+   * Read jug number (`targetJug`) in which the target should be achieved (1 for X, 2 for Y).
+
+3. **Representation of State:**
+
+   * A state is represented as a pair `(jug1, jug2)` where
+
+     * `jug1 = amount of water in Jug X`
+     * `jug2 = amount of water in Jug Y`.
+
+4. **Visited States:**
+
+   * Maintain a `set` to avoid revisiting the same state.
+
+5. **DFS Exploration:**
+
+   * Start from initial state `(0,0)`.
+   * For each state, generate possible moves:
+
+     * **Fill Jug X**: `(capacity1, jug2)`
+     * **Fill Jug Y**: `(jug1, capacity2)`
+     * **Empty Jug X**: `(0, jug2)`
+     * **Empty Jug Y**: `(jug1, 0)`
+     * **Pour Jug X → Jug Y** until Jug X empty or Jug Y full.
+     * **Pour Jug Y → Jug X** until Jug Y empty or Jug X full.
+   * Push each new state into DFS recursion.
+   * If the target is achieved in the required jug → stop.
+
+6. **Goal Test:**
+
+   * If `(jug1 == target && targetJug == 1)` OR `(jug2 == target && targetJug == 2)`
+     → print the path and terminate.
+
+7. **Path Printing:**
+
+   * Keep a vector of visited states (`path`).
+   * On success, print sequence of states from `(0,0)` to goal.
+
+8. **Stop**
+
+
+**OUTPUT :**
+
+Example Input –
+
+```
+Enter capacity of jug X: 4
+Enter capacity of jug Y: 3
+Enter target amount of water: 2
+In which jug do you want the target (1 for X, 2 for Y)? 1
+```
+
+Possible Output –
+
+```
+Solution steps:
+(0, 0)
+(0, 3)
+(3, 0)
+(3, 3)
+(4, 2)
+(0, 2)
+```
+
+If no solution exists –
+
+```
+No solution found.
+```
+
+**TIME COMPLEXITY :**
+
+* In worst case,
+* Maximum states ≈ **(capacity1 + 1) × (capacity2 + 1)**.
+* Therefore, Time Complexity = **O(capacity1 × capacity2)**.
+
+**SPACE COMPLEXITY :**
+
+**O(capacity1 × capacity2)** for visited set and recursion stack.
+
+<img width="1220" height="842" alt="image" src="https://github.com/user-attachments/assets/5ccc59f5-21cf-4443-85ba-14678d731e66" />
