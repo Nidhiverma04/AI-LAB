@@ -373,8 +373,8 @@ Count : 2
 
 * **O(d)** since only current path is stored.
 
-##
-## **LAB-2 (21 August 2025)**
+
+# **LAB-2 (21 August 2025)**
 
 **QUES 1 →**
 **AIM :** To solve the **Grid Pathfinding Problem** using **A\* Search Algorithm (with Manhattan Distance heuristic)** and print the shortest path from a given **source** to the **destination**, or print **“No solution found”** if blocked by obstacles.
@@ -444,6 +444,7 @@ Count : 2
 
 Example Input –
 
+```
 Enter grid size (n): 5
 Enter source (x y): 0 0
 Enter destination (x y): 4 4
@@ -477,7 +478,6 @@ If no valid route exists:
 No solution found!
 ```
 
----
 
 **TIME COMPLEXITY :**
 
@@ -494,7 +494,7 @@ E is the number of edges in the graph
 
 **SPACE COMPLEXITY :**
 
-* **O(n²)** for grid storage, visited array, and priority queue.
+**O(n²)** for grid storage, visited array, and priority queue.
 
 <img width="794" height="482" alt="image" src="https://github.com/user-attachments/assets/f671d076-a9b2-43b5-88fa-af707cef7bd2" />
 
@@ -504,8 +504,6 @@ E is the number of edges in the graph
 
 **QUES 2 →**
 **AIM :** To solve the **Water Jug Problem** using **Depth First Search (DFS)** and print the sequence of states (amount of water in both jugs) that leads to the target amount in the desired jug. If no sequence exists, print **“No solution found.”**
-
----
 
 **WORKING :**
 
