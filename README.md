@@ -608,13 +608,13 @@ To implement the **Tic Tac Toe Game** using the **Minimax Algorithm** and genera
 
 **OUTPUT :**
 
-_ _ _  
-_ _ _   
+_ -_ _  
+_- _ _   
 _- _ _   
 
 Enter your move (row col, 0-indexed): 1 1
 
-_ _ _   
+_- _ _   
 _ O _   
 _ -_ _   
 
