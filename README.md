@@ -544,22 +544,18 @@ No solution found.
 
 <img width="1220" height="842" alt="image" src="https://github.com/user-attachments/assets/5ccc59f5-21cf-4443-85ba-14678d731e66" />
 
-
-## **LAB-3 (28 August 2025)**
+# **LAB-3 (28 August 2025)**
 
 **AIM :**
 To implement the **Tic Tac Toe Game** using the **Minimax Algorithm** and generate a **Game Tree** to determine the best possible move for the computer. The program allows a human player to play against the computer (which always plays optimally).
 
-
 **WORKING :**
 
 1. **Start**
-
 2. **Input Parameters:**
 
    * A 3×3 Tic Tac Toe board initialized with all cells as empty (`'_'`).
    * Computer plays as **‘X’ (maximizer)** and user plays as **‘O’ (minimizer)**.
-
 3. **Representation of State:**
 
    * Each state is represented by a structure containing:
@@ -569,7 +565,6 @@ To implement the **Tic Tac Toe Game** using the **Minimax Algorithm** and genera
      * `isMax` → Boolean indicating whether it’s **X’s turn** or **O’s turn**.
      * `children` → list of possible next states.
      * `parent` → pointer to previous state.
-
 4. **Utility Functions:**
 
    * **`moves_left()`** → checks if any cell is empty.
@@ -579,7 +574,6 @@ To implement the **Tic Tac Toe Game** using the **Minimax Algorithm** and genera
      * `-1` if O wins,
      * `0` otherwise.
    * **`print_board()`** → displays the current board.
-
 5. **Game Tree Generation:**
 
    * Implemented using **recursive function** `generate_tree(State *s)`.
@@ -590,79 +584,73 @@ To implement the **Tic Tac Toe Game** using the **Minimax Algorithm** and genera
 
        * If `isMax = true` → place **‘X’** in all empty cells, create child states, and choose the **maximum score** among them.
        * If `isMax = false` → place **‘O’** in all empty cells, create child states, and choose the **minimum score** among them.
-
 6. **Goal Test:**
 
    * If `get_score()` returns `1` → **Computer (X) wins**.
    * If `get_score()` returns `-1` → **Player (O) wins**.
    * If no moves are left → **Draw**.
-
 7. **Gameplay:**
 
    * The user enters their move `(row, column)`.
    * Computer responds using the **best move** obtained from the Minimax tree.
    * Board is printed after every move until a win or draw occurs.
-
 8. **Stop**
-
 
 **OUTPUT :**
 
-_ -_ _  
-_- _ _   
-_- _ _   
+_ -_ _
+_- _ _
+_- _ _
 
 Enter your move (row col, 0-indexed): 1 1
 
-_- _ _   
-_ O _   
-_ -_ _   
+_- _ _
+_ O _
+_ -_ _
 
 Computer plays:
 
-X _ _   
-_ O _   
-_- _ _   
+X _ _
+_ O _
+_- _ _
 
 Enter your move (row col, 0-indexed): 1 0
 
-X _ _  
-O O _  
-_ -_ _  
+X _ _
+O O _
+_ -_ _
 
 Computer plays:
 
-X _ _  
-O O X  
-_- _ _  
+X _ _
+O O X
+_- _ _
 
 Enter your move (row col, 0-indexed): 2 1
 
-X _ _  
-O O X  
-_ O _  
+X _ _
+O O X
+_ O _
 
 Computer plays:
 
-X X _  
-O O X  
-_ O _  
+X X _
+O O X
+_ O _
 
 Enter your move (row col, 0-indexed): 2 0
 
-X X _  
-O O X  
-O O _  
+X X _
+O O X
+O O _
 
 Computer plays:
 
-X X X  
-O O X  
-O O _  
+X X X
+O O X
+O O _
 
 Computer (X) wins!
-
-
 
 **TIME COMPLEXITY :**
 
@@ -671,14 +659,8 @@ Computer (X) wins!
   where
   `b` = branching factor (possible moves at each turn)
   `d` = depth of the game tree (maximum number of moves).
-
 * For 3×3 Tic Tac Toe, maximum states ≈ **9! = 362,880**.
-
 
 **SPACE COMPLEXITY :**
 
 * **O(b × d)** due to recursion stack and storage of game tree nodes.
-
-
-
-
